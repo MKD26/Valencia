@@ -9,7 +9,7 @@ public class DialogueManager : MonoBehaviour
      public GameObject canvas;
     public GameObject skripthost;
     Spieleraktivierendeaktiviern skript;
-
+//
     public Text nameText;
     public Text dialogueText;
 
@@ -19,6 +19,10 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Vanessa
+        skripthost = GameObject.Find("First Person Player/Spieleraktivierendeaktivieren");
+        skript = skripthost.GetComponent<Spieleraktivierendeaktiviern>();
+        canvas.SetActive(true);
         sentences = new Queue<string>();
     }
 
