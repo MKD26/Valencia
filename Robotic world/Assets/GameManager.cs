@@ -35,6 +35,10 @@ private float timeBetweenQuestions = 1f;
 public GameObject canvas;
 public GameObject skripthost;
 Spieleraktivierendeaktiviern skript;
+//Vanessa
+public GameObject panel;
+public GameObject panell;
+public int zahl = 0;
 
 void Start ()
 {
@@ -84,8 +88,20 @@ IEnumerator TransitionToNextQuestion ()
     
     }
     else
-    {
+    {   yield return new WaitForSeconds (timeBetweenQuestions);
         canvas.SetActive(false);
+        //Vanessa
+        if(zahl == 3)
+        {   Debug.Log("ES KLAPPT");
+            panel.SetActive(true);
+            // skript.Spielerein();
+        }        
+
+        else if (zahl < 3)
+        {
+                panell.SetActive(true);
+               // skript.Spielerein();
+        }
         skript.Spielerein();
 
     }
@@ -99,30 +115,30 @@ IEnumerator TransitionToNextQuestion ()
 }
 
 public void UserSelectTrue ()
-{
+{   Debug.Log("SELECT TRUE");
     animator.SetTrigger("True");
     if (currentQuestion.isTrue)
-    {
-        Debug.Log("CORRECT!");
+    {   zahl = zahl+1;
+        Debug.Log("CORRECT!1");
     }
     else 
     {
-        Debug.Log("WRONG!");
+        Debug.Log("WRONG!1");
     }
 
     StartCoroutine (TransitionToNextQuestion());
 }
 
 public void UserSelectFalse ()
-{
+{   Debug.Log("SELECT FALSE");
     animator.SetTrigger("False");
     if (!currentQuestion.isTrue)
-    {
-        Debug.Log("CORRECT!");
+    {   zahl = zahl+1;
+        Debug.Log("CORRECT!2");
     }
     else 
     {
-        Debug.Log("WRONG!");
+        Debug.Log("WRONG!2");
     }
     StartCoroutine (TransitionToNextQuestion());
 }
